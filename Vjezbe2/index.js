@@ -2,6 +2,8 @@ import express from 'express';
 let PORT = 3000;
 let app = express();
 
+app.use(express.json());
+
 let pizze = [
     {id: 1, naziv: 'Margheritta', cijena: 9},
     {id: 2, naziv: 'Capricciosa', cijena: 12},
@@ -40,9 +42,10 @@ app.post("/pizze", (req, res) => {
 })
 
 app.delete("/pizze/:id", (req, res) => {
-    let brisanje_id = req.params.id;
-    console.log(brisanje_id);
-    res.send('Endpoint radi...')
+    let brisanje_id = parseInt(req.params.id);
+    console.log("Brisanje pizze s ID-jem:", brisanje_id);
+    pizze = pizze.filter(pizza => pizza.id !== brisanje_id);
+    res.send('Endpoint radi...', pizze)
 })
 
 app.listen(PORT, error => {
