@@ -1,3 +1,4 @@
+/*
 import express from 'express';
 let PORT = 3000;
 let app = express();
@@ -47,6 +48,26 @@ app.delete("/pizze/:id", (req, res) => {
     pizze = pizze.filter(pizza => pizza.id !== brisanje_id);
     res.send('Endpoint radi...', pizze)
 })
+
+app.listen(PORT, error => {
+    if (error) {
+        console.error('Doslo je od greske u pokretanju ')
+
+    }
+    console.log(`Aplikacija slusa na portu ${PORT}`)
+})
+*/
+import express from 'express';
+import pizzeRouter from 'pizze.js';
+const PORT = 3000;
+let app = express();
+
+app.use(express.json())
+
+
+app.use('/pizze', pizzeRouter)
+
+
 
 app.listen(PORT, error => {
     if (error) {
