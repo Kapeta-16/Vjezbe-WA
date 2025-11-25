@@ -13,7 +13,7 @@ let pizze = [
     {id: 5, naziv: 'Salami', cijena: 13},
 ]
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) => { 
     console.log('Pozvana GET / ruta')
     res.send('Pozdrav')
 })

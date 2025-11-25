@@ -33,4 +33,4 @@ app.listen(PORT, error => {
     } else {
         console.log(`Express.js posluzitelj slusa na portu ${PORT}`)
     }
-});
+}); 
