@@ -1,12 +1,12 @@
 import express from 'express'
-import { rentals } from '../data/rentals,js'
+import { rentals } from '../data/boatrentals.js'
 
 const router = express.Router();
 
 router.post("/", (req, res) => {
     const boat_id = req.body.boatId;
 
-    let ako_postoji = boats.find(rental => boat.id == boat_id);
+    let ako_postoji = boats.find(rentals => rentals.boatId == boat_id);
     if(ako_postoji){
         return res.status(400).json({greska:`Brod sa id ${brod_id} vec postoji`})
     }
@@ -19,12 +19,12 @@ router.post("/", (req, res) => {
 })
 
 router.post("/", (req, res) => {
-    rental_podaci = req.body;
-    const brod_id = req.body.brod;
+    const rental_podaci = req.body;
+    const brod_id = req.body.boatId;
 
     const brod_postoji = boats.find(boat => boat.id == brod_id)
 
-    id(!brod_postoji){
+    if(!brod_postoji){
         return res.status(404).json({greska:`brod ${boat_id} ne postoji`})
     }
 

@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import {boats} from '../data/boats.js'
+import { boats } from '../data/boats.js'
 
 router.get("/", (req, res) => {
     if(!boats){
@@ -26,7 +26,7 @@ router.post("/", (req, res) => {
     let novi_brod = req.body;
     let naziv_broda = req.body.naziv;
 
-    let brod_postoji = boats.find(brod => brod.naziv == req.body.naziv)
+    let brod_postoji = boats.find(brod => brod.naziv == naziv_broda)
     if(brod_postoji){
         return res.status(400).json({greska: "brod sa tim nazivom vec postoji"})
     }

@@ -22,7 +22,6 @@ app.listen(PORT, error => {
     console.log("Radi")
 })
 
-
 app.get("/", (req, res) => {
     console.log('Pozvana GET / ruta')
     res.send('Pozdrav')
