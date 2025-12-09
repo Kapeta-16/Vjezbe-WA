@@ -1,19 +1,42 @@
 import express from 'express';
-import fs from 'fs';
+import fs from 'fs/promises';
 
 const app = express();
 
-fs.readFile("./data/loremIpsum.txt", "utf-8", (err, data) => {
-  if (err) {
-    // ako se dogodila greška
-    console.error('Greška prilikom čitanja datoteke:', err); // ispisuje grešku
-    return;
-    }
-    console.log('Sadržaj datoteke:', data); // ispisuje sadržaj datoteke
+function read_lorem(callback) {
+    fs.readFile("./data/loremIpsum.txt", "utf-8", callback)
+}
+
+app.get('/lorem', (req, res) => {
+        read_lorem ((err, data) => {
+            if (err) {
+                res.status(404).send("Greška u čitanju datoteke.")
+            }
+             return res.status(200).send(data);
+     })
 });
 
-app.get('/', (req, res) => {
-    res.status(200).send('Vrijeme je za čitanje datoteka!');
+app.get('/lorempromise', (req, res) => {
+        fs.readFile("./data/loremIpsum.txt", "utf-8")
+        .then(data => {
+            console.log("podaci:", data)
+            res.status(200).send(data)
+        })
+        .catch(error => {
+            console.log("greška:", error)
+            res.status(400).send("Greška!")
+        })
+});
+
+
+app.get('/lorem-promise', async (req, res) => {
+    try{
+        let data = await fs.readFile("./data/loremIpsum.txt", "utf-8")
+        res.status(200).send(data)
+    }catch(error) {
+        res.status(400).send("Greška!")
+    }
+            
 });
 
 app.listen(3000, () => {
