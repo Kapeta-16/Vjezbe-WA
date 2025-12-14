@@ -36,5 +36,10 @@ router.post('/', (req, res) => {
     res.status(201).json({ message: 'Narudžba je uspješno kreirana.', narudzba: nova_narudzba });
     });
 
+router.post('/', (req, res) => {
+    console.log('Primljeni podaci narudžbe:', req.body);
+    // ostatak endpointa ...
+});
+
 export default router;
 

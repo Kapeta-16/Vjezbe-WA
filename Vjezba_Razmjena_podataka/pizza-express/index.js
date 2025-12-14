@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import narudbeRouter from './routes/narudbe.js';
 import pizzeRouter from './routes/pizze.js';
-app.use('/pizze', pizzeRouter); // dodavanje prefiksa "/pizze" za svaki endpoint iz pizze.js Routera
 
 const corsOptions = {
     origin: 'http://localhost:5173'
