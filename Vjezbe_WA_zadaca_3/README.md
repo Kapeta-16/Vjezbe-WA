@@ -1,3 +1,7 @@
+Potrebno je klonirati repozitorij Vjezbe_WA_zadaca_3 na vlastito računalo.
+
+
+
 Za početak potrebno je u terminalu napisati "npm install" ova naredba će instalirati sve potrebne dependencies za ovaj projekt.
 Potrebno je još provjeriti je li Node.js isntaliran, to radimo kroz terminal sa naredbom "node -v", ako nije instaliran potrebno ga je ga instalirati
 
