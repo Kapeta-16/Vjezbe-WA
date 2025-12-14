@@ -1,5 +1,5 @@
-Za početak treba se u terminalu upisati "npm install" koj će istalirati sve sta nam treba za ovaj projekt.
-Provjeriti ako se ima Node.js kroz terminal sa "node -v", ako fali treba ga instalirati
+Za početak potrebno je u terminalu napisati "npm install" ova naredba će instalirati sve potrebne dependencies za ovaj projekt.
+Potrebno je još provjeriti je li Node.js isntaliran, to radimo kroz terminal sa naredbom "node -v", ako nije instaliran potrebno ga je ga instalirati
 
-Za pokretanje projekta treba se uči u subdirectory pizza-express te kroz terminal sa "nodemon index.js" pokrecemo projekt kroz express poslužitelj
-zatim se treba otvoriti jos jedan terminal u kojem se otvara subdirectory pizze-vue te u njemu pizza-vue, u tom teminalu se pokreće vue dio projekta (server) sa "npm run dev"
+Za pokretanje backend dijela projekta potrebno je uči u subdirectory pizza-express te kroz terminal sa naredbom "nodemon index.js" sa kojom se pokreće express poslužitelj
+Zatim je potrebno otvoriti još jedan terminal u kojem se otvara subdirectory pizze-vue te u njemu pizza-vue, u tom teminalu se pokreće Vue dio projekta (Vue server) sa "npm run dev" na taj način pokrečemo frontend 
