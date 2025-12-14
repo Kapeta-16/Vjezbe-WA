@@ -1,8 +1,7 @@
-Potrebno je klonirati repozitorij Vjezbe_WA_zadaca_3 na vlastito računalo.
+Potrebno je klonirati repozitorij Vjezbe_WA na vlastito računalo.
 
 
-
-Za početak potrebno je u terminalu napisati "npm install" ova naredba će instalirati sve potrebne dependencies za ovaj projekt.
+Za početak potrebno je uči u directorij Vjezbe_WA_zadaca_3, u terminalu napisati "npm install" ova naredba će instalirati sve potrebne dependencies za ovaj projekt.
 Potrebno je još provjeriti je li Node.js isntaliran, to radimo kroz terminal sa naredbom "node -v", ako nije instaliran potrebno ga je ga instalirati
 
 Za pokretanje backend dijela projekta potrebno je uči u subdirectory pizza-express te kroz terminal sa naredbom "nodemon index.js" sa kojom se pokreće express poslužitelj
