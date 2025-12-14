@@ -1,4 +1,4 @@
-Potrebno je klonirati repozitorij Vjezbe_WA na vlastito računalo.
+Potrebno je klonirati repozitorij Vjezbe_WA na vlastito računalo. " https://github.com/Kapeta-16/Vjezbe-WA.git "
 
 
 Za početak potrebno je uči u directorij Vjezbe_WA_zadaca_3, u terminalu napisati "npm install" ova naredba će instalirati sve potrebne dependencies za ovaj projekt.
