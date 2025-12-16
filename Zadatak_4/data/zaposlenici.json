@@ -208,5 +208,15 @@
     "email": "kristijan.matic@firma.hr",
     "placa": 2800,
     "godine_staza": 4
+  },
+  {
+    "id": 22,
+    "ime": "Mario",
+    "prezime": "Matić",
+    "pozicija": "AI Engineer",
+    "odjel": "IT",
+    "email": "mario.matic@firma.hr",
+    "placa": 2600,
+    "godine_staza": 3
   }
 ]

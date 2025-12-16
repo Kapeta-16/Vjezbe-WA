@@ -34,6 +34,30 @@ function validatacija_podataka(z){
 
 }
 
+function sortiraj(zaposlenici, polje, smjer_sortiranja){
+       if(!polje || !smjer_sortiranja) return;
+            zaposlenici.sort((a, b) => {
+                const A = a[polje]
+                const B = b[polje]
+
+                if(typeof A ==="string" && typeof B === "string"){
+                    if(smjer_sortiranja === 'uzlazno') {
+                        return A.localeCompare(B);
+                    }else if(smjer_sortiranja === 'silazno'){
+                        return B.localeCompare(A);
+                    }
+                }
+                
+                if(typeof A ==="number" && typeof B === "number"){
+                    if(smjer_sortiranja === 'uzlazno') {
+                        return A - B;
+                    }else if(smjer_sortiranja === 'silazno'){
+                        return B -A;
+                    }
+                }
+            })
+    }
+
 //Dohvačanje svih zaposlenika
 router.get("/", async (req, res) => {
     let filtriraj_po_poziciji = req.query.pozicija;
@@ -43,64 +67,55 @@ router.get("/", async (req, res) => {
     let smjer = req.query.smjer;
 
 
-    function sortiraj(zaposlenici, polje, smjer_sortiranja){
-            if(smjer_sortiranja === 'uzlazno') {
-                zaposlenici.sort((a, b) => a[polje] - b[polje]);
-            }else if(smjer_sortiranja === 'silazno'){
-                zaposlenici.sort((a, b) => b[polje] - a[polje]);
+
+        try{
+            const data = await citanje_datoteke();
+            let zaposlenici = JSON.parse(data);
+
+            if(filtriraj_po_poziciji){
+            zaposlenici = zaposlenici.filter(z => z.pozicija.toLowerCase() === filtriraj_po_poziciji.toLowerCase());
             }
+
+            if(godine_staza_min > 0){
+                zaposlenici = zaposlenici.filter(z => z.godine_staza >= godine_staza_min)
+            }
+
+            if(godine_staza_max){
+                zaposlenici = zaposlenici.filter(z => z.godine_staza <= godine_staza_max)
+            }
+
+            sortiraj(zaposlenici, sort, smjer);
+
+            res.status(200).json(zaposlenici);
+
+        }catch(error){
+            console.error('Greška prilikom čitanja datoteke:', error);
+            res.status(500).send('Greška prilikom čitanja datoteke.');
         }
-    
-    
-    try{
-        const data = await citanje_datoteke();
-        let zaposlenici = JSON.parse(data);
-
-        if(filtriraj_po_poziciji){
-           zaposlenici = zaposlenici.filter(z => z.pozicija.toLowerCase() === filtriraj_po_poziciji.toLowerCase());
-        }
-
-        if(godine_staza_min > 0){
-            zaposlenici = zaposlenici.filter(z => z.godine_staza >= godine_staza_min)
-        }
-
-        if(godine_staza_max){
-            zaposlenici = zaposlenici.filter(z => z.godine_staza <= godine_staza_max)
-        }
-
-        sortiraj(zaposlenici, sort, smjer);
-
-        res.status(200).json(zaposlenici);
-
-    }catch(error){
-        console.error('Greška prilikom čitanja datoteke:', error);
-        res.status(500).send('Greška prilikom čitanja datoteke.');
-    }
-});
+    });
 
 //Dohvačanje svih zaposlenika po id-u
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
 
-    let id = parseInt(req.params.id);
+    try{
+        const id = parseInt(req.params.id);
+        const data = await citanje_datoteke(); 
+        const zaposlenici = JSON.parse(data);
 
-    citanje_datoteke((err, data) => {
-    if(err){
-        return res.status(500).json({Greška: "Greška u čitanju datoteke"});
-    }
-        let newdata = JSON.parse(data);
-        let zaposlenik = newdata.find(z => z.id === id);
+        const zaposlenik = zaposlenici.find(z => z.id === id);
 
         if(!zaposlenik){
-            return res.status(404).json({ Greška: `Zaposlenik sa id: ${id} ne postoji`})
+                return res.status(404).json({ Greška: `Zaposlenik sa id: ${id} ne postoji`})
+            }
 
-        }
-
-        res.status(200).send(zaposlenik);
-        
-    })
+            res.status(200).send(zaposlenik);
+    }catch{
+         res.status(500).json({Greška: "Greška u čitanju datoteke"});
+    }
 });
 
-router.post("/", (req, res) => {
+//dodavanje zaposlenika
+router.post("/", async (req, res) => {
 
     const greska = validatacija_podataka(req.body);
 
@@ -108,11 +123,8 @@ router.post("/", (req, res) => {
         return res.status(400).json({Greška: greska})
     }
 
-    citanje_datoteke((err, data) => {
-
-    if(err){
-        return res.status(500).json({Greška: "Greška u čitanju datoteke"})
-    }
+    try{
+        const data = await citanje_datoteke();
         const zaposlenici = JSON.parse(data);
         let novi_zaposlenik = req.body
         let novi_id = zaposlenici.length + 1;
@@ -124,14 +136,39 @@ router.post("/", (req, res) => {
 
         zaposlenici.push(novi)
 
-            fs.writeFile('./data/zaposlenici.json', JSON.stringify(zaposlenici, null, 2), (err, data) => {
-                if(err){
-                    return res.status(500).json({Greška: "Greška tokom zapisivanja u datoteku"});
-                }
-             console.log('Podaci uspješno zapisani u datoteku.');
+        await fs.writeFile('./data/zaposlenici.json', JSON.stringify(zaposlenici, null, 2));
+            console.log('Podaci uspješno zapisani u datoteku.');
             res.status(201).json({ poruka: 'Podaci uspješno zapisani u datoteku.', novi});
-        });
-    });
+
+    }catch{
+        res.status(500).json({Greška: "Greška u čitanju datoteke"})
+    }
+});
+
+// brisanje zaposlenik apo id-u
+router.delete("/:id", async (req, res) => {
+    const id = parseInt(req.params.id);
+
+    try{
+        const data = await citanje_datoteke();
+        let zaposlenici = JSON.parse(data);
+
+        //provjera ako zaposlenik postoji
+        const postoji = zaposlenici.some(z => z.id === id);
+        if(!postoji){
+            return res.status(404).json({Greška: "Zaposlenik Not Found"})
+        }
+
+        zaposlenici = zaposlenici.filter(z => z.id !== id);
+
+        await fs.writeFile('./data/zaposlenici.json', JSON.stringify(zaposlenici, null, 2));
+        console.log('Zaposlenik uspešno izbrisan');
+        res.status(200).json({ poruka: `Zaposlenik s id ${id} je uspješno izbrisan`});
+    }catch{
+        res.status(500).json({Greška: "Greška u čitanju datoteke"})
+    }
+
+
 });
 
 
