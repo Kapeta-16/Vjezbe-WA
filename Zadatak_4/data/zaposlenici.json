@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "ime": "Ivan",
+    "prezime": "Horvat",
+    "pozicija": "Frontend developer",
+    "odjel": "IT",
+    "email": "ivan.horvat@firma.hr",
+    "placa": 1800,
+    "godine_staza": 4
+  },
+  {
+    "id": 2,
+    "ime": "Ana",
+    "prezime": "Kovač",
+    "pozicija": "Backend developer",
+    "odjel": "IT",
+    "email": "ana.kovac@firma.hr",
+    "placa": 2000,
+    "godine_staza": 6
+  },
+  {
+    "id": 3,
+    "ime": "Marko",
+    "prezime": "Marić",
+    "pozicija": "DevOps inženjer",
+    "odjel": "IT",
+    "email": "marko.maric@firma.hr",
+    "placa": 2200,
+    "godine_staza": 8
+  },
+  {
+    "id": 4,
+    "ime": "Petra",
+    "prezime": "Novak",
+    "pozicija": "UX dizajner",
+    "odjel": "Dizajn",
+    "email": "petra.novak@firma.hr",
+    "placa": 1700,
+    "godine_staza": 5
+  },
+  {
+    "id": 5,
+    "ime": "Luka",
+    "prezime": "Babić",
+    "pozicija": "QA tester",
+    "odjel": "IT",
+    "email": "luka.babic@firma.hr",
+    "placa": 1500,
+    "godine_staza": 3
+  },
+  {
+    "id": 6,
+    "ime": "Maja",
+    "prezime": "Jurić",
+    "pozicija": "Projekt menadžer",
+    "odjel": "Menadžment",
+    "email": "maja.juric@firma.hr",
+    "placa": 2300,
+    "godine_staza": 10
+  },
+  {
+    "id": 7,
+    "ime": "Tomislav",
+    "prezime": "Perić",
+    "pozicija": "Sistemski administrator",
+    "odjel": "IT",
+    "email": "tomislav.peric@firma.hr",
+    "placa": 1900,
+    "godine_staza": 7
+  },
+  {
+    "id": 8,
+    "ime": "Klara",
+    "prezime": "Radić",
+    "pozicija": "HR specijalist",
+    "odjel": "Ljudski resursi",
+    "email": "klara.radic@firma.hr",
+    "placa": 1600,
+    "godine_staza": 4
+  },
+  {
+    "id": 9,
+    "ime": "Nikola",
+    "prezime": "Božić",
+    "pozicija": "Data analitičar",
+    "odjel": "Analitika",
+    "email": "nikola.bozic@firma.hr",
+    "placa": 2100,
+    "godine_staza": 6
+  },
+  {
+    "id": 10,
+    "ime": "Ivana",
+    "prezime": "Šimić",
+    "pozicija": "Marketing specijalist",
+    "odjel": "Marketing",
+    "email": "ivana.simic@firma.hr",
+    "placa": 1650,
+    "godine_staza": 5
+  },
+  {
+    "id": 11,
+    "ime": "Filip",
+    "prezime": "Rogić",
+    "pozicija": "Content manager",
+    "odjel": "Marketing",
+    "email": "filip.rogic@firma.hr",
+    "placa": 1550,
+    "godine_staza": 4
+  },
+  {
+    "id": 12,
+    "ime": "Martina",
+    "prezime": "Pavić",
+    "pozicija": "Grafički dizajner",
+    "odjel": "Dizajn",
+    "email": "martina.pavic@firma.hr",
+    "placa": 1600,
+    "godine_staza": 6
+  },
+  {
+    "id": 13,
+    "ime": "Josip",
+    "prezime": "Vuković",
+    "pozicija": "Sales manager",
+    "odjel": "Prodaja",
+    "email": "josip.vukovic@firma.hr",
+    "placa": 2400,
+    "godine_staza": 11
+  },
+  {
+    "id": 14,
+    "ime": "Ema",
+    "prezime": "Knežević",
+    "pozicija": "Account manager",
+    "odjel": "Prodaja",
+    "email": "ema.knezevic@firma.hr",
+    "placa": 1850,
+    "godine_staza": 5
+  },
+  {
+    "id": 15,
+    "ime": "Dario",
+    "prezime": "Grgić",
+    "pozicija": "Business analyst",
+    "odjel": "Analitika",
+    "email": "dario.grgic@firma.hr",
+    "placa": 2050,
+    "godine_staza": 7
+  },
+  {
+    "id": 16,
+    "ime": "Sara",
+    "prezime": "Lončar",
+    "pozicija": "HR asistent",
+    "odjel": "Ljudski resursi",
+    "email": "sara.loncar@firma.hr",
+    "placa": 1400,
+    "godine_staza": 2
+  },
+  {
+    "id": 17,
+    "ime": "Ante",
+    "prezime": "Katić",
+    "pozicija": "Tehnička podrška",
+    "odjel": "IT",
+    "email": "ante.katic@firma.hr",
+    "placa": 1450,
+    "godine_staza": 3
+  },
+  {
+    "id": 18,
+    "ime": "Iva",
+    "prezime": "Zorić",
+    "pozicija": "Office manager",
+    "odjel": "Administracija",
+    "email": "iva.zoric@firma.hr",
+    "placa": 1500,
+    "godine_staza": 6
+  },
+  {
+    "id": 19,
+    "ime": "Matija",
+    "prezime": "Krnić",
+    "pozicija": "Junior developer",
+    "odjel": "IT",
+    "email": "matija.krnic@firma.hr",
+    "placa": 1350,
+    "godine_staza": 1
+  },
+  {
+    "id": 20,
+    "ime": "Tea",
+    "prezime": "Blažević",
+    "pozicija": "Social media manager",
+    "odjel": "Marketing",
+    "email": "tea.blazevic@firma.hr",
+    "placa": 1500,
+    "godine_staza": 4
+  },
+  {
+    "id": 21,
+    "ime": "Kristijan",
+    "prezime": "Matić",
+    "pozicija": "AI Engineer",
+    "odjel": "IT",
+    "email": "kristijan.matic@firma.hr",
+    "placa": 2800,
+    "godine_staza": 4
+  }
+]
